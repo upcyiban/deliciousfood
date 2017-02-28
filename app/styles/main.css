@@ -81,3 +81,43 @@ body {
     border-bottom: 0;
   }
 }
+.left-img {
+  float: left;
+  width: 40%;
+  min-width: 198px;
+  height: 198px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.right-div {
+  float: left;
+  width: 60%;
+  background: red;
+}
+.title{
+  padding-top:6px;
+  width: 25%;
+  height: 40px;
+  text-align: center;
+  font-family: "Microsoft YaHei UI";
+  font-weight: bold;
+  font-size: 15px;
+  border: silver 1px solid;
+  float: left;
+  cursor: pointer;
+}
+.body{
+  border: silver 1px solid;
+  height: 200px;
+}
+.myTable{
+  min-width: 500px;
+  max-width: 668px;
+}
+.foodStyle{
+  width: 50%;
+  min-width: 120px;
+  background: #000;
+  float: left;
+}
