@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>吃在石大</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	
+	<!--[if IE]>
+		<script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body ng-app="myApp" ng-controller="menu">
+	<div class="head">
+		<nav>
+		  <ul id="main">
+		    <li>主页</li>
+		    <li ng-click='order="price"'>价格</li>
+		    <li>口味
+				<ul class="drop">
+			        <div>
+				        <li ng-click='search = "酸"'>酸</li>
+				        <li ng-click='search = "甜"'>甜</li>
+				        <li ng-click='search = "辣"'>辣</li>
+				        <li ng-click='search = "苦"'>苦</li>
+			        </div>
+			    </ul>
+		    </li>
+		    <li>餐厅
+			    <ul class="drop">
+			        <div>
+				        <li ng-click='search = "玉兰"'>玉兰</li>
+				        <li ng-click='search = "荟萃"'>荟萃</li>
+				        <li ng-click='search = "唐岛湾"'>唐岛湾</li>
+			        </div>
+			    </ul>
+		    </li>
+		  </ul>
+		</nav>
+	</div>
+	<div class="body">
+		<div class="container">
+		    <div class="row">
+		        <div class="col-md-3 col-sm-6" ng-repeat="food in foods|orderBy:order|filter:search">
+		            <div class="pricingTable">
+		                <div class="pricingTable-header" 
+		                	style=" background-image:url({{food.path}});opacity:0.7;
+		                	background-repeat: no-repeat;background-size:100% 200px;">
+		                    <h3 class="heading"></h3>
+		                    <span class="price-value">
+		                        <span class="currency">￥</span> {{food.price}}
+		                        <span class="month"> /份</span>
+		                    </span>
+		                </div>
+		                <div class="pricing-content">
+		                    <ul>
+		                        <li>菜名 : {{food.name}}</li>
+		                        <li>地域 : {{food.region}}</li>
+                                <li>口味 : {{food.kind}}</li>
+                                <li>餐厅 : {{food.restaurant}}</li>
+                                <li>评分 : {{food.num}}</li>
+                            </ul>
+                            <a href="./discuss.html" class="read">详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+	</div>
+<script src = 'http://code.angularjs.org/1.2.9/angular.min.js'></script>
+<script src="js/app.js"></script>
+</body>
+</html>
