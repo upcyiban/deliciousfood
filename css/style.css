@@ -268,6 +268,7 @@ li {
   font-size: 30px;
   color:black;
   text-align: left;
+  overflow: hidden;
 }
 .f-text{
   color:#777;
@@ -283,10 +284,24 @@ li {
 .button-disscuss{
   float: right;
 }
+.body-disscuss h3 {
+  position:relative;
+  height:33px;
+  font-size:14px;
+  font-weight:400;
+  background:#e3eaec;
+  border:1px solid #dee4e7;
+}
 .body-disscuss h3 span{
-  text-align: left;
-  color: black;
-
+  position:absolute;
+  left:6px;
+  top:6px;
+  background:#fff;
+  line-height:28px;
+  display:inline-block;
+  padding:0 15px;
+  color:black;
+  font-size: 20px;
 }
 @media screen and (max-width: 990px){
    .pricingTable{ margin-bottom: 25px; }
