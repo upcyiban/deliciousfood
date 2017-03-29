@@ -282,7 +282,8 @@ li {
   overflow:auto;
 }
 .button-disscuss{
-  float: right;
+  float:left;
+  width: 10%;
 }
 .body-disscuss h3 {
   position:relative;
@@ -302,6 +303,14 @@ li {
   padding:0 15px;
   color:black;
   font-size: 20px;
+}
+.star{
+  overflow: hidden;
+}
+.star-input{
+  float: left;
+  text-align: left;
+  width: 90%;
 }
 @media screen and (max-width: 990px){
    .pricingTable{ margin-bottom: 25px; }

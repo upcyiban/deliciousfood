@@ -4,6 +4,9 @@
 	<meta charset="UTF-8">
 	<title>评论</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
+	 <link href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/star-rating.css">
+	<link rel="stylesheet" href="css/star-rating.min.css">
 	<link rel="stylesheet" href="css/style.css">	
 	<!--[if IE]>
 		<script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -13,8 +16,18 @@
 	<div class="body-disscuss">
 		<p class="p">来，说说你的感想</p>
 		<div><textarea class="f-text"></textarea></div>
-		<p class="p"><button class="btn btn-success btn-lg button-disscuss">发送</button></p>
+		<div class="star">
+			<div class="container star-input">
+				<input id="star" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="sm">
+			</div>
+			<div class="button-disscuss">
+				<button class="btn btn-success btn-lg">发送</button>
+			</div>
+		</div>
 		<h3><span>大家在说</span></h3>
 	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/star-rating.js"></script>
+	<script src="js/discuss-app.js"></script>
 </body>
 </html>
