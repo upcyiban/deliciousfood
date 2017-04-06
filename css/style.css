@@ -280,6 +280,7 @@ li {
   width: 100%;
   height:100px;
   overflow:auto;
+  font-size: 25px;
 }
 .button-disscuss{
   float:left;
@@ -311,6 +312,34 @@ li {
   float: left;
   text-align: left;
   width: 90%;
+}
+.say{
+  padding: 20px;
+  width: 100%;
+  border-bottom:dashed #ccccff 0.2px;
+  height: 140px;
+  word-wrap:break-word;
+}
+.msg{
+  padding-left: 30px; 
+  float: left;
+  width:85%;
+  height: 100px;
+}
+.msg p{
+  text-align: left;
+  font-size: 24px;
+  color:black;
+  font-family:arial;
+} 
+.msg p span{
+  color:#2b4a78;
+  margin-right: 10px;
+}
+.msg .time{
+  color:black;
+  text-align: left;
+  font-size: 18px;
 }
 @media screen and (max-width: 990px){
    .pricingTable{ margin-bottom: 25px; }

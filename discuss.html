@@ -6,28 +6,40 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
 	 <link href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/star-rating.css">
-	<link rel="stylesheet" href="css/star-rating.min.css">
 	<link rel="stylesheet" href="css/style.css">	
 	<!--[if IE]>
 		<script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<![endif]-->
 </head>
-<body>
-	<div class="body-disscuss">
+<body ng-app="disscussApp">
+	<div class="body-disscuss" ng-controller="disscuss">
 		<p class="p">来，说说你的感想</p>
-		<div><textarea class="f-text"></textarea></div>
+		<div><textarea class="f-text" ng-model="text"></textarea></div>
 		<div class="star">
 			<div class="container star-input">
 				<input id="star" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="sm">
 			</div>
 			<div class="button-disscuss">
-				<button class="btn btn-success btn-lg">发送</button>
+				<button class="btn btn-success btn-lg" ng-click="push()">发送</button>
 			</div>
 		</div>
 		<h3><span>大家在说</span></h3>
+		<ul >
+			<li class="say" ng-repeat = 'sayer in sayers'>
+				<span style="float:left"><img ng-src= {{sayer.img}} alt="" width="100px"></span>
+				<div class="msg">
+					<p><span>{{sayer.id}}</span>{{sayer.text}}</p>
+					<p class="time">
+						{{sayer.time}}
+					</p>
+				</div>		
+			</li>
+		</ul>
+		
 	</div>
 	<script src="js/jquery.min.js"></script>
-	<script src="js/star-rating.js"></script>
+	<script src = 'http://code.angularjs.org/1.2.9/angular.min.js'></script>
+	<script src="js/starrating.js"></script>
 	<script src="js/discuss-app.js"></script>
 </body>
 </html>
