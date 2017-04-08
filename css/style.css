@@ -114,6 +114,7 @@ li {
 /*body*/
 .pricingTable{
       text-align: center;
+      margin-bottom: 40px;
   }
   .pricingTable .pricingTable-header{
       padding: 30px 0;
@@ -121,10 +122,7 @@ li {
       position: relative;
       transition: all 0.3s ease 0s;
   }
-  .pricingTable-header{
-    
-  
-  }
+
   .pricingTable:hover .pricingTable-header{
       background: #09b2c6;
   }
@@ -340,6 +338,16 @@ li {
   color:black;
   text-align: left;
   font-size: 18px;
+}
+.intro{
+  text-align: left;
+  color: #000;
+  font-family:arial;
+  word-wrap:break-word;
+  font-size: 24px;
+}
+.intro h4{
+  font-size: 30px;
 }
 @media screen and (max-width: 990px){
    .pricingTable{ margin-bottom: 25px; }

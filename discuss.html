@@ -11,8 +11,12 @@
 		<script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<![endif]-->
 </head>
-<body ng-app="disscussApp">
+<body ng-app="myApp">
 	<div class="body-disscuss" ng-controller="disscuss">
+		<div class="intro">
+			<h4>菜品介绍：</h4>
+			<p>11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
+		</div>
 		<p class="p">来，说说你的感想</p>
 		<div><textarea class="f-text" ng-model="text"></textarea></div>
 		<div class="star">
@@ -25,7 +29,7 @@
 		</div>
 		<h3><span>大家在说</span></h3>
 		<ul >
-			<li class="say" ng-repeat = 'sayer in sayers'>
+			<li class="say" ng-repeat = 'sayer in sayers|orderBy:order:1'>
 				<span style="float:left"><img ng-src= {{sayer.img}} alt="" width="100px"></span>
 				<div class="msg">
 					<p><span>{{sayer.id}}</span>{{sayer.text}}</p>
@@ -40,6 +44,6 @@
 	<script src="js/jquery.min.js"></script>
 	<script src = 'http://code.angularjs.org/1.2.9/angular.min.js'></script>
 	<script src="js/starrating.js"></script>
-	<script src="js/discuss-app.js"></script>
+	<script src="js/app.js"></script>
 </body>
 </html>
