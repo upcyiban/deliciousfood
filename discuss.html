@@ -15,7 +15,7 @@
 	<div class="body-disscuss" ng-controller="disscuss">
 		<div class="intro">
 			<h4>菜品介绍：</h4>
-			<p>11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
+			<p>{{food.introduce}}</p>
 		</div>
 		<p class="p">来，说说你的感想</p>
 		<div><textarea class="f-text" ng-model="text"></textarea></div>
@@ -30,9 +30,9 @@
 		<h3><span>大家在说</span></h3>
 		<ul >
 			<li class="say" ng-repeat = 'sayer in sayers|orderBy:order:1'>
-				<span style="float:left"><img ng-src= {{sayer.img}} alt="" width="100px"></span>
+				<span style="float:left"><img ng-src= {{sayer.ybphoto}} alt="" width="100px"></span>
 				<div class="msg">
-					<p><span>{{sayer.id}}</span>{{sayer.text}}</p>
+					<p><span>{{sayer.username}}</span>{{sayer.detail}}</p>
 					<p class="time">
 						{{sayer.time}}
 					</p>
