@@ -349,6 +349,9 @@ li {
 .intro h4{
   font-size: 30px;
 }
+.p span{
+  font-size: 15px;
+}
 @media screen and (max-width: 990px){
    .pricingTable{ margin-bottom: 25px; }
    .body-disscuss{width: 100%;}

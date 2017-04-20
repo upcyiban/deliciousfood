@@ -6,49 +6,7 @@
 </head>
 <body ng-app='myApp'>
 		<div ng-controller='admin'>
-			<!-- <form class="form-horizontal" name="form" method="POST" enctype="multipart/form-data" action="http://localhost:8080/second/publish"> -->
-		     <!--  <div class="form-group">
-		        <label for="title" class="col-sm-3 control-label" >商品名：</label>
-		        <div class="col-sm-9">
-		          <input type="text" class="form-control" id="title" placeholder="商品名"  name="title">
-		        </div>
-			      </div>
-			      <div class="form-group">
-			        <label for="title" class="col-sm-3 control-label" >价格：</label>
-			        <div class="col-sm-9">
-			          <input type="text" class="form-control" id="price" placeholder="价格"  name="price">
-			        </div>
-			      </div>
-			      <div class="form-group">
-			        <label for="degree" class="col-sm-3 control-label" >崭新度:</label>
-			        <div class="col-sm-9">
-			          <input  class="form-control" id="degree" placeholder="崭新度" name="degree">
-			        </div>
-			      </div>
-			      <div class="form-group">
-			        <label for="phone" class="col-sm-3 control-label" >手机号：</label>
-			        <div class="col-sm-9">
-			          <input type="text" class="form-control" id="phone" placeholder="手机"  name="telephone">
-			        </div>
-			      </div>
-			      <div class="form-group">
-			        <label for="detail" class="col-sm-3 control-label" >分类：</label>
-			        <div class="col-sm-9">
-			          <input type="text" class="form-control" id="species" placeholder="Tip:学习、生活、娱乐" name="species">
-			        </div>
-			      </div>
-			      <div class="form-group">
-			        <label for="qq" class="col-sm-3 control-label" >QQ:</label>
-			        <div class="col-sm-9">
-			          <input  class="form-control" id="qq" placeholder="QQ" name="qq">
-			        </div>
-			      </div>
-			      <div class="form-group">
-			        <label for="detail" class="col-sm-3 control-label" >商品介绍：</label>
-			        <div class="col-sm-9">
-			          <textarea class="form-control" rows="3" name="detail" id="detail"></textarea>
-			        </div>
-			      </div>
+			<!-- <form class="form-horizontal" name="form" method="POST" enctype="multipart/form-data" action="http://localhost:8080/second/publish">		    
 			      <div class="form-group">
 			        <label for="qq" class="col-sm-3 control-label" >请上传一张图片:</label>
 			        <div class="col-sm-9">
@@ -62,17 +20,20 @@
 			        </div>
 			      </div>
 		    </form> -->
-			<h2>添加</h2>
-			<div>
-				菜名：<input type="text" ng-model = 'name'><br>
-				单价：<input type="text" ng-model = 'price'><br>
-				地域：<input type="text" ng-model = 'region'><br>
-				口味：<input type="text" ng-model = 'kind'><br>
-				餐厅：<input type="text" ng-model = 'restaurant'><br>
-				简介：<textarea  cols="30" rows="10" ng-model = 'introduce'></textarea>
-			</div>
-			图片：<input type="file">
-			<button ng-click="add()">添加</button>
+		    <form  name="form" method="POST" enctype="multipart/form-data" action="http://localhost:8086/upload/photo">
+				<h2>添加</h2>
+				<div>
+					菜名：<input type="text" ng-model = 'name'><br>
+					单价：<input type="text" ng-model = 'price'><br>
+					地域：<input type="text" ng-model = 'region'><br>
+					口味：<input type="text" ng-model = 'kind'><br>
+					餐厅：<input type="text" ng-model = 'restaurant'><br>
+					简介：<textarea  cols="30" rows="10" ng-model = 'introduce'></textarea>
+				</div>
+				图片：
+				<input type="file"/>
+				<button ng-click="add()" type="submit">添加</button>
+			</form>
 		</div>
 		<div ng-controller='menu'>
 			<h2>删除</h2>
