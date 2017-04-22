@@ -20,19 +20,19 @@
 			        </div>
 			      </div>
 		    </form> -->
-		    <form  name="form" method="POST" enctype="multipart/form-data" action="http://localhost:8086/upload/photo">
-				<h2>添加</h2>
-				<div>
-					菜名：<input type="text" ng-model = 'name'><br>
-					单价：<input type="text" ng-model = 'price'><br>
-					地域：<input type="text" ng-model = 'region'><br>
-					口味：<input type="text" ng-model = 'kind'><br>
-					餐厅：<input type="text" ng-model = 'restaurant'><br>
-					简介：<textarea  cols="30" rows="10" ng-model = 'introduce'></textarea>
-				</div>
-				图片：
-				<input type="file"/>
-				<button ng-click="add()" type="submit">添加</button>
+		    <form  name="form" method="POST" enctype="multipart/form-data" action="http://localhost:8086/evaluate/create">
+			   <h2>添加</h2>
+					<div>
+						菜名：<input type="text" ng-model = 'name' name="name"><br>
+						单价：<input type="text" ng-model = 'price' name="price"><br>
+						地域：<input type="text" ng-model = 'region' name="region"><br>
+						口味：<input type="text" ng-model = 'kind' name="kind"><br>
+						餐厅：<input type="text" ng-model = 'restaurant' name="restaurant"><br>
+						简介：<textarea  cols="30" rows="10" ng-model = 'introduce' name="introduce"></textarea>
+					</div>
+					图片：
+					<input type="file" ng-model='img' name="file"/>
+				<button  type="submit">添加</button>
 			</form>
 		</div>
 		<div ng-controller='menu'>
@@ -51,7 +51,7 @@
 			</div>
 		</div>
 		<div>
-			<h2>更改</h2>
+			<h2>暂时未提供更改接口</h2>
 		</div>
 <script src = 'http://code.angularjs.org/1.2.9/angular.min.js'></script>
 <script src="js/app.js"></script>

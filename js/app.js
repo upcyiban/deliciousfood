@@ -4,6 +4,7 @@ function verification($rootScope, $http) {
 	var url2 = window.location.href;
 	if (url2.indexOf("verify_request") != -1) {
 	    var vq = window.location.href.split('=')[1].split('&')[0];
+	    console.log("vq:"+vq);
 	    if (vq != '') {
 	    	$http.get($rootScope.url+'food/auth?vq=' + vq).then(function (response){
             	console.log(response.data);
@@ -16,8 +17,9 @@ function verification($rootScope, $http) {
 	    }
 	}
     $http.get($rootScope.url+'food/isauth').then(function (response) {
+    	//console.log(response.data);
         if (response.data == 0) {
-            window.location.href = "https://openapi.yiban.cn/oauth/authorize?client_id=" + APPID+ "&redirect_uri=" + CALLBACK + "&display=html"
+            window.location.href = "https://openapi.yiban.cn/oauth/authorize?client_id=" + APPID+ "&redirect_uri=" + CALLBACK + "&display=html";
        	}
     });
 }
@@ -29,6 +31,7 @@ myApp.run(function ($rootScope, $http){
 	$rootScope.url = 'http://localhost:8086/';
 	$rootScope.foodid = '';
 	verification($rootScope, $http);
+	
 });
 myApp.controller('menu',function  ($scope, $http, $rootScope) {
 	$http.get($rootScope.url +'choose/findall').then(function (response){
@@ -40,16 +43,29 @@ myApp.controller('menu',function  ($scope, $http, $rootScope) {
 	$scope.delete = function (attr){
 		console.log(attr.food.id);
 		$http.get($rootScope.url + 'evaluate/delete?id='+attr.food.id).then(function (response){
-			if(response.data ==1){
-				alert("删除成功");
+			if(response.data.code ==1){
+				 alert("删除成功");
 			}else{
-				alert("未知错误")
+				if(response.data.code == -1){
+					alert("你不是管理员");
+				}else{
+					alert("未知错误");
+				}
+				
 			}
 		})
 	}
 });
 
 myApp.controller('disscuss', function ($scope, $rootScope, $location, $http){
+	$http.get($rootScope.url + 'deliciousfood/review/getuser').then(function (response){
+		console.log(response.data);
+		$scope.access_token = response.data.visit_oauth.access_token;
+		$http.get('http://openapi.yiban.cn/user/me?access_token=' + $scope.access_token).then(function (response){
+			console.log("user:"+response.data);
+		});
+	});
+	
 	var id = $location.url().split('=')[1];
 	console.log(id);
 	$http.get($rootScope.url +'choose/findall').then(function (response){
@@ -76,36 +92,17 @@ myApp.controller('disscuss', function ($scope, $rootScope, $location, $http){
 		if(star == 0){
 			star = 5;
 		}
-		/*
-		*
-		*
-		* 
-		* bug
-		*
-		* 
-		*/
-		// $http.get($rootScope.url + 'deliciousfood/review/doreview?dishesid='+id +'&&detials=' + $scope.text).then(function (response){
-		// 	if(response.data ==1){
-		// 		alert("提交成功");
-		// 	}else{
-		// 		alert("未知错误")
-		// 	}
-		// });
+		$http.get($rootScope.url + 'deliciousfood/review/doreview?dishesid='+id +'&&detials=' + $scope.text).then(function (response){
+			console.log(response.data.code);
+			if(response.data.code ==1){
+				alert("提交成功,您的评分为"+star+"星");
+			}else{
+				alert("未知错误")
+			}
+		});
 	};
 	
 });
 
 myApp.controller('admin', function ($scope, $http, $rootScope){
-	$scope.add = function(){
-		$http.get($rootScope.url +'evaluate/create?name='+
-			$scope.name+'&&region='+$scope.region+'&&kind='+$scope.kind+'&&restaurant='+
-			$scope.restaurant+'&&price='+$scope.price+'&&introduce='+$scope.introduce).then(function (response){
-				if(response.data ==1){
-					alert("提交成功");
-				}else{
-					alert("未知错误")
-				}
-			});
-	}
-	
-})
+});
