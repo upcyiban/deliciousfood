@@ -35,6 +35,7 @@ myApp.run(function ($rootScope, $http){
 });
 myApp.controller('menu',function  ($scope, $http, $rootScope) {
 	$http.get($rootScope.url +'choose/findall').then(function (response){
+		console.log(response.data);
 		$scope.foods = response.data;
 	});
 	$scope.search = '';
@@ -59,11 +60,8 @@ myApp.controller('menu',function  ($scope, $http, $rootScope) {
 
 myApp.controller('disscuss', function ($scope, $rootScope, $location, $http){
 	$http.get($rootScope.url + 'deliciousfood/review/getuser').then(function (response){
-		console.log(response.data);
-		$scope.access_token = response.data.visit_oauth.access_token;
-		$http.get('http://openapi.yiban.cn/user/me?access_token=' + $scope.access_token).then(function (response){
-			console.log("user:"+response.data);
-		});
+		$scope.yb_username = response.data.info.yb_username;
+		$scope.yb_userhead = response.data.info.yb_userhead;
 	});
 	
 	var id = $location.url().split('=')[1];
@@ -81,8 +79,8 @@ myApp.controller('disscuss', function ($scope, $rootScope, $location, $http){
 	});
 	$scope.push = function(){
 		var push = {
-			username : '123',
-			ybphoto : 'img/face.gif',
+			username : $scope.yb_username,
+			ybphoto : $scope.yb_userhead,
 			detail : this.text,
 			time : timer
 		}
@@ -104,5 +102,4 @@ myApp.controller('disscuss', function ($scope, $rootScope, $location, $http){
 	
 });
 
-myApp.controller('admin', function ($scope, $http, $rootScope){
-});
+myApp.controller('admin', function ($scope, $http, $rootScope){});
