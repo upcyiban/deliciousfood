@@ -28,7 +28,7 @@ myApp.config(function ($httpProvider) {
 	$httpProvider.defaults.withCredentials = true;
 });
 myApp.run(function ($rootScope, $http){
-	$rootScope.url = 'http://localhost:8086/';
+	$rootScope.url = 'http://yb.upc.edu.cn:8086/';
 	$rootScope.foodid = '';
 	verification($rootScope, $http);
 	
