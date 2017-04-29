@@ -15,7 +15,7 @@
 	<div class="body-disscuss" ng-controller="disscuss">
 		<div class="intro">
 			<h4>菜品介绍：</h4>
-			<p>{{food.introduce}}</p>
+			<p ng-bind="food.introduce"></p>
 		</div>
 		<p class="p">来，说说你的感想<span>(评价不评默认5星哦)</span></p>
 		<div><textarea class="f-text" ng-model="text"></textarea></div>
@@ -32,10 +32,8 @@
 			<li class="say" ng-repeat = 'sayer in sayers|orderBy:order:1'>
 				<span style="float:left"><img ng-src= {{sayer.ybphoto}} alt="" width="100px"></span>
 				<div class="msg">
-					<p><span>{{sayer.username}}</span>{{sayer.detail}}</p>
-					<p class="time">
-						{{sayer.time}}
-					</p>
+					<p><span ng-bind="sayer.username"></span>{{sayer.detail}}</p>
+					<p class="time" ng-bind="sayer.time"></p>
 				</div>		
 			</li>
 		</ul>

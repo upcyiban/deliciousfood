@@ -28,16 +28,19 @@ myApp.config(function ($httpProvider) {
 	$httpProvider.defaults.withCredentials = true;
 });
 myApp.run(function ($rootScope, $http){
-	$rootScope.url = 'http://yb.upc.edu.cn:8086/';
+	$rootScope.url = 'http://yb.upc.edu.cn:8087/';
 	$rootScope.foodid = '';
-	verification($rootScope, $http);
-	
+	verification($rootScope, $http);	
 });
 myApp.controller('menu',function  ($scope, $http, $rootScope) {
 	$http.get($rootScope.url +'choose/findall').then(function (response){
-		console.log(response.data);
+		//console.log(response.data);
 		$scope.foods = response.data;
+		for(let i=0; i < $scope.foods.length;i++){
+			$scope.foods[i].price = $scope.foods[i].price*1;
+		}
 	});
+
 	$scope.search = '';
 	$scope.order = 'name';
 	$scope.desc = 0;
@@ -60,6 +63,7 @@ myApp.controller('menu',function  ($scope, $http, $rootScope) {
 
 myApp.controller('disscuss', function ($scope, $rootScope, $location, $http){
 	$http.get($rootScope.url + 'deliciousfood/review/getuser').then(function (response){
+		console.log(response.data.info);
 		$scope.yb_username = response.data.info.yb_username;
 		$scope.yb_userhead = response.data.info.yb_userhead;
 	});
@@ -69,35 +73,41 @@ myApp.controller('disscuss', function ($scope, $rootScope, $location, $http){
 	$http.get($rootScope.url +'choose/findall').then(function (response){
 		$scope.food = response.data[id];
 	});
+	$scope.sayers = [];
 	$scope.order = 'time';
 	$scope.text = "";
 	var date = new Date();
 	var timer = date.getMonth()+1+"月"+date.getDate()+"日 "+date.getHours()+"时"+date.getMinutes()+"分";
 	$http.get($rootScope.url +'deliciousfood/review/getreview?id='+id).then(function (response){
 		$scope.sayers = response.data;
-		console.log($scope.sayers);
+		console.log('sayers:');
+		console.log(response.data);
 	});
 	$scope.push = function(){
-		var push = {
-			username : $scope.yb_username,
-			ybphoto : $scope.yb_userhead,
-			detail : this.text,
-			time : timer
-		}
-		var star = $('#star').val();
-		console.log(push);
-		$scope.sayers.push(push);
-		if(star == 0){
-			star = 5;
-		}
-		$http.get($rootScope.url + 'deliciousfood/review/doreview?dishesid='+id +'&&detials=' + $scope.text).then(function (response){
-			console.log(response.data.code);
-			if(response.data.code ==1){
-				alert("提交成功,您的评分为"+star+"星");
-			}else{
-				alert("未知错误")
+		if($scope.text.length==0){
+			alert("评论不能为空");
+		}else{
+			var push = {
+				username : $scope.yb_username,
+				ybphoto : $scope.yb_userhead,
+				detail : this.text,
+				time : timer
 			}
-		});
+			var star = $('#star').val();
+			$scope.sayers.push(push);
+			if(star == 0){
+				star = 5;
+			}
+			$http.get($rootScope.url + 'deliciousfood/review/doreview?dishesid='+id +
+				'&&detials='+$scope.text+'&&num='+star+'&&ybhead='+$scope.yb_userhead).then(function (response){
+				console.log(response.data.code);
+				if(response.data.code ==1){
+					alert("提交成功,您的评分为"+star+"星");
+				}else{
+					alert("未知错误")
+				}
+			});
+		}	
 	};
 	
 });

@@ -19,13 +19,14 @@ body {
   padding: 0 50px;
   margin: 50px auto;
 }
-#main li {
-  font-size: 0.8rem;
+#main .li {
+  font-size: 15px;
   display: inline-block;
   position: relative;
   padding: 15px 20px;
   cursor: pointer;
   z-index: 5;
+  float: left;
   min-width: 120px;
 }
 
@@ -54,9 +55,10 @@ li {
   position: relative;
 }
 .drop li {
-  display: block;
+  display: block !important;
   padding: 0;
   width: 100%;
+  padding: 15px 20px;
   background: #3E8760 !important;
 }
 #main li:nth-child(1):hover ul div {
@@ -355,4 +357,8 @@ li {
 @media screen and (max-width: 990px){
    .pricingTable{ margin-bottom: 25px; }
    .body-disscuss{width: 100%;}
+   #main{
+      font-size: 30px;
+      /*color:red;*/
+   }
 }

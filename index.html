@@ -15,9 +15,9 @@
 	<div class="head">
 		<nav>
 		  <ul id="main">
-		    <li>主页</li>
-		    <li ng-click=' order="price";desc =!desc '>价格</li>
-		    <li>口味
+		    <li ng-click='search = "新品"' class="li">新品</li>
+		    <li ng-click='order="price";desc =!desc;' class="li">价格</li>
+		    <li class="li">口味
 				<ul class="drop">
 			        <div>
 				        <li ng-click='search = "酸"'>酸</li>
@@ -27,7 +27,7 @@
 			        </div>
 			    </ul>
 		    </li>
-		    <li>餐厅
+		    <li class="li">餐厅
 			    <ul class="drop">
 			        <div>
 				        <li ng-click='search = "玉兰"'>玉兰</li>
@@ -45,21 +45,22 @@
 		        <div class="col-md-3 col-sm-6" ng-repeat="food in foods|orderBy:order:desc|filter:search">
 		            <div class="pricingTable">
 		                <div class="pricingTable-header" 
-		                	style=" background-image:url({{food.path}});opacity:0.7;
+		                	style=" background-image:url(http://{{food.path}});opacity:0.7;
 		                	background-repeat: no-repeat;background-size:100% 200px;">
 		                    <h3 class="heading"></h3>
 		                    <span class="price-value">
-		                        <span class="currency">￥</span> {{food.price}}
+		                        <span class="currency">￥</span> 
+		                        <span ng-bind="food.price"></span>
 		                        <span class="month"> /份</span>
 		                    </span>
 		                </div>
 		                <div class="pricing-content">
 		                    <ul>
-		                        <li>菜名 : {{food.name}}</li>
-		                        <li>地域 : {{food.region}}</li>
-                                <li>口味 : {{food.kind}}</li>
-                                <li>餐厅 : {{food.restaurant}}</li>
-                                <li>评分 : {{food.num}}</li>
+		                        <li>菜名 : <span ng-bind="food.name"></span></li>
+		                        <li>地域 : <span ng-bind="food.region"></span></li>
+                                <li>口味 : <span ng-bind="food.kind"></span></li>
+                                <li>餐厅 : <span ng-bind="food.restaurant"></span></li>
+                                <li>评分 : <span ng-bind="food.num"></span></li>
                             </ul>
                             <a href="./discuss.html#foodid={{this.food.id}}" class="read">详情&评论</a>
                         </div>
